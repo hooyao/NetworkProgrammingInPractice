@@ -1,0 +1,29 @@
+version: "3"
+services:
+  npip-server:
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+    image: hooyao/npip-sshd:0.1
+    ports:
+      - "1022:22"
+    # options needed for gdb debugging
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+
+  npip-client:
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+    image: hooyao/npip-sshd:0.1
+    ports:
+      - "2022:22"
+    # options needed for gdb debugging
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
