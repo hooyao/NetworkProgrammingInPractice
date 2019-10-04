@@ -1,0 +1,16 @@
+version: "3"
+services:
+  npip-server:
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+    image: hooyao/npip-sshd:0.1
+    ports:
+      - "1022:22"
+  npip-client:
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+    image: hooyao/npip-sshd:0.1
+    ports:
+      - "2022:22"
